@@ -20,10 +20,10 @@ div {
 	float: left;
 }
 #one {
-	width: 20%;
+	width: 59%; //60% doesnt work, probably because of the 1px pixel
 }
 #two{
-	width: 59%;
+	width: 20%;
 }
 #three{
 	width: 20%;
