@@ -4,3 +4,20 @@ body {
     font-family:"Georgia"; 
     color:white;
 }
+#wrapper{
+	width:80%;
+	float: center;
+}
+
+#col1 {
+	width:20%;
+	float: left;
+}
+#col2{
+	width: 60%;
+	float: left;
+}
+#col3{
+	width: 20%;
+	float: left;
+}
