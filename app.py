@@ -51,7 +51,7 @@ def login():
         }
     ]
 
-    current_room = rooms[6];
+    current_room = rooms[2];
 
     buttons = [
         {
@@ -65,7 +65,7 @@ def login():
     ]
 
     for door in current_room["doors"]: # this should put the move functions at the end.
-        buttons.extend({
+        buttons.append({
             "type": "Move",
             "name": "move to " + door
         })
