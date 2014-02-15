@@ -1,0 +1,30 @@
+body {
+	background-color:#000000;
+	text-align:center; 
+    font-family:"Georgia"; 
+    color:white;
+}
+
+div {
+}
+
+#wrapper {
+	margin: 0 auto;
+	width: 80%;
+}
+
+.column {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #666666;
+	float: left;
+}
+#one {
+	width: 20%;
+}
+#two{
+	width: 59%;
+}
+#three{
+	width: 20%;
+}
