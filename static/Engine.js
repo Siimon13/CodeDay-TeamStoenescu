@@ -163,20 +163,22 @@ var play_sound = function(num){
 		}
 	}
 	if(num == 1){
-		room_that_hear_sound = current_player.currentRoom.doors.push(current_player.currentRoom.name);//[current_player.currentRoom.name,current_player.currentRoom.doors];
+		current_player.currentRoom.doors.push(current_player.currentRoom.name);//[current_player.currentRoom.name,current_player.currentRoom.doors];
+		room_that_hear_sound = current_player.currentRoom.doors;
 	}
 	if(num == 2){
 		room_that_hear_sound = game_rooms;
 	}
 	var list = "ifyougetthis you just faileedddddd"
 	if (current_player.currentRoom.name == "bedroom") {
-		var list = room_that_hear_sound.push("scream");
+		room_that_hear_sound.push("scream");
+		var list = room_that_hear_sound;
 	}
 	if (current_player.currentRoom.name == "closet") {
-		var list = room_that_hear_sound.push("twig");
+		room_that_hear_sound.push("twig");
+		var list = room_that_hear_sound;
 	}
 
-	var list = room_that_hear_sound.push(sound);
 	if($.contains(current_player.currentRoom.name, room_that_hear_sound) != -1 && num != 0){
 		// either twig or scream....
 		if (current_player.currentRoom.name == "bedroom") {
