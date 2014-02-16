@@ -104,6 +104,16 @@ def login():
             "name": "move to " + door
         })
 
+    buttonhtml = {
+        "hallway": '''<button id='hallway' type="button" onclick="move_room('player_1','hallway',this); ">Move Hallway</button>''',
+        "living_room": '''<button id="living_room" type="button" onclick="move_room('player_1','living_room',this); ">Move Living</button>''',
+        "foyer": '''<button id="foyer" type="button" onclick="move_room('player_1','foyer',this); ">Move Foyer</button>''',
+        "bathroom": '''<button id="bathroom" type="button" onclick="move_room('player_1','bathroom',this); ">Move Bathroom</button>''',
+        "bedroom": '''<button id="bedroom" type="button" onclick="move_room('player_1','bedroom',this); ">Move Bedroom</button>''',
+        "closet": '''<button id="closet" type="button" onclick="move_room('player_1','closet',this); ">Move Closet</button>''',
+        "kitchen": '''<button id="kitchen" type="button" onclick="move_room('player_1','kitchen',this); ">Move Kitchen</button>''',
+    }
+
 
     return render_template("main.html",
                             rooms = rooms, 

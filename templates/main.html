@@ -24,10 +24,10 @@
 	</div>
 
 	<div class="column" id="two">
-		{% for button in buttons %}
+		<!--{% for button in buttons %}
 		<button type="button" onclick=highlight(this,4)>{{ button.name }}</button>
 		<br>
-		{% endfor %}
+		{% endfor %}-->
 
 
 		<button id="hallway" type="button" onclick="move_room('player_1','hallway',this); ">Move Hallway</button>
@@ -39,18 +39,8 @@
 		<button id="kitchen" type="button" onclick="move_room('player_1','kitchen',this); ">Move Kitchen</button>
 		<button id="time" type="button" onclick=test()>Time Test</button>
 		<button id="inventory" type="button" onclick=show_inventory()>Inventory</button>
-		<button id="search" type="button" onclick=search_skelly()>Search Skeleton</button>
+		<button id="search" type="button" onclick=search_loot()>Search Skeleton</button>
 
-		<button id="hallway" type="button" onclick=move_room("player_1","hallway")>Move Hallway</button>
-<button id="living_room" type="button" onclick=move_room("player_1","living_room")>Move Living</button>
-<button id="foyer" type="button" onclick=move_room("player_1","foyer")>Move Foyer</button>
-<button id="bathroom" type="button" onclick=move_room("player_1","bathroom")>Move Bathroom</button>
-<button id="bedroom" type="button" onclick=move_room("player_1","bedroom")>Move Bedroom</button>
-<button id="closet" type="button" onclick=move_room("player_1","closet")>Move Closet</button>
-<button id="kitchen" type="button" onclick=move_room("player_1","kitchen")>Move Kitchen</button>
-<button id="time" type="button" onclick=test()>Time Test</button>
-<button id="inventory" type="button" onclick=show_inventory()>Inventory</button>
-<button id="search"
 	</div>
 	<div class="column" id="three">
 		<fieldset>

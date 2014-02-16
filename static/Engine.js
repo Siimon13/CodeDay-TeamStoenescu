@@ -1,19 +1,19 @@
+
 function room(name,length,width,doors,events){
 	this.name = name;
 	this.length = length;
 	this.width = width;
 	this.doors = doors;
-	this.events = events;
 }
 
 var game_rooms = [
-	new room("kitchen",4,4,["hallway","living_room"],false),
-	new room("bathroom",2,2,["hallway"],false),
-	new room("living_room",5,5,["hallway","foyer","living_room"],false),
-	new room("closet",1,1,["bedroom"],"sticks"),
-	new room("hallway",8,2,["kitchen","living_room","bathroom","bedroom"],false),
-	new room("bedroom",4,6,["closet","hallway"],"skeletonScream"),
-	new room("foyer",2,2,["living_room"],false),
+	new room("kitchen",4,4,["hallway","living_room"]),
+	new room("bathroom",2,2,["hallway"]),
+	new room("living_room",5,5,["hallway","foyer","living_room"]),
+	new room("closet",1,1,["bedroom"]),
+	new room("hallway",8,2,["kitchen","living_room","bathroom","bedroom"]),
+	new room("bedroom",4,6,["closet","hallway"]),
+	new room("foyer",2,2,["living_room"]),
 	];
 
 function player (name, currentRoom) {
@@ -22,6 +22,14 @@ function player (name, currentRoom) {
 	this.hp = 2;
 	this.inventory = 0;
 }
+function event(type,noise,damage,source_room,destination_room){
+	this.type = type;
+	this.noise = noise;
+	this.damage = damage;
+	this.source_room = source_room;
+	this.destination_room = destination_room;
+}
+
 
 var timewait = false;
 
@@ -34,7 +42,7 @@ var play_sound = function(num){
 	$.getScript("../static/sip_messages.js", function(){});
 	$.getScript("../static/jquery-latest.js", function(){});
  
-	if(num == 0){
+	if(num == 1){
 		room_that_hear_sound = [current_player.currentRoom.name];
 		if(current_player.currentRoom.name == room_that_hear_sound){
 			if (current_player.currentRoom.name == "bedroom") {
@@ -47,11 +55,11 @@ var play_sound = function(num){
 			}
 		}
 	}
-	if(num == 1){
+	if(num == 2){
 		current_player.currentRoom.doors.push(current_player.currentRoom.name);//[current_player.currentRoom.name,current_player.currentRoom.doors];
 		room_that_hear_sound = current_player.currentRoom.doors;
 	}
-	if(num == 2){
+	if(num == 3){
 		room_that_hear_sound = game_rooms;
 	}
 	var list = "ifyougetthis you just faileedddddd"
@@ -75,14 +83,14 @@ var play_sound = function(num){
 			audio.play();
 		}
 	}
-	send_message(list); // should send message
+	//send_message(list); // should send message
 
 
 	//document.getElementById("myDiv").innerHTML = document.getElementById("myDiv").innerHTML + room_that_hear_sound;
 }
 roomcheck1 = true;
+livingcheck1 = true;
 var move_room = function(xplayer, xroom, button){
-
 	var timemove = (current_player.currentRoom.length + current_player.currentRoom.width) / 4;
 	for (var i = current_player.currentRoom.doors.length - 1; i >= 0; i--){
 		if (timewait) {break}
@@ -92,61 +100,89 @@ var move_room = function(xplayer, xroom, button){
 				if (game_rooms[j].name == xroom) {
 					current_player.currentRoom = game_rooms[j];
 					timemove = 1000 *(((current_player.currentRoom.length + current_player.currentRoom.width) / 4) + timemove);
-					highlight(button,(timemove / 1000)); 	
+					highlight(button,(timemove / 1000)); 
 					timewait = true;
 					setTimeout(function(){timewait = false}, timemove);
 				}
 			};
 			//return current_player.currentRoom.doors;
 			add_line("You tiptoe into the " + xroom + ".");// + " with a delay of " + timemove + ".");
-			if(current_player.currentRoom.events != false){
-				if(current_player.currentRoom.events == "sticks"){
-					add_line("As you push carefully into this room, you tread on some twigs on the ground.");
-					play_sound(0);
-				}
-				else if(current_player.currentRoom.events == "skeletonScream"){
-					current_player.currentRoom.events = "skeletonNoScream";
-					add_line("You creep into the room, and a skeleton falls across your path in front of you.");
-					play_sound(1);
-				}
-				else if(current_player.currentRoom.events == "skeletonNoScream"){
-					add_line("You edge into the room, and almost trip over the skeleton. You almost scream again, but manage to clamp your hand in front of your mouth.");
-
-				}
-				changeDisplay(current_player.currentRoom);	
+			if(current_player.currentRoom.name == "closet"){
+				add_line("As you push carefully into this room, you tread on some twigs on the ground.");
+				play_sound(1);
+				new event(0,1,3,"closet","closet");
 			}
+			else if(current_player.currentRoom.name == "bedroom"  && roomcheck1 == true){
+				roomcheck1 = false;
+				add_line("You creep into the room, and a skeleton falls across your path in front of you.");
+				play_sound(2);
+				new event(0,2,3,"closet","closet");
+			}
+			else if(current_player.currentRoom.name == "bedroom"){
+				add_line("You edge into the room, and almost trip over the skeleton. You almost scream again, but manage to clamp your hand in front of your mouth.");
 
+			} 
+			else if(current_player.currentRoom.name == "living_room" && livingcheck1 == true){
+			livingcheck1 = false;
+			add_line("You see a note on the table.");
+
+			}
+			changeDisplay(current_player.currentRoom);	
 		}
-	};
+
+	}
 }
 
 var changeDisplay = function(xroom){
 for(var i = 0; i < game_rooms.length; i++){
 	if(xroom.doors.indexOf(game_rooms[i].name) > -1){
 		document.getElementById(game_rooms[i].name).style.display="inline";
+		document.getElementById(game_rooms[i].name).style.display="white";
 	}
 	else{
-		document.getElementById(game_rooms[i].name).style.display="none";
+		document.getElementById(game_rooms[i].name).style.display="black";
 	}
 }
 if(current_player.currentRoom.name == "bedroom"){
 	document.getElementById("search").style.display="inline";
+	document.getElementById(game_rooms[i].name).style.display="white";
 }
 else{
-	document.getElementById("search").style.display="none";
+	document.getElementById(game_rooms[i].name).style.display="black";
+}
+if(current_player.currentRoom.name == "living_room" && note_die1 == true){
+document.getElementById("note1").style.display="inline";
+document.getElementById(game_rooms[i].name).style.display="white";
+}
+else{
+document.getElementById(game_rooms[i].name).style.display="black";
+}
+}
+
+
+
+
+var note_die1 = true;
+var read_note1 = function(){
+if (note_die1 == true) {
+note_die1 = false;
+add_line("You read the note.")
+setTimeout(function(){add_line("My claws. They took my claws. I will rip out their souls. I want my claws.")}, 600);
+setTimeout(function(){add_line("The note disintergrates in your hand.")}, 3000);
+changeDisplay(current_player.currentRoom)
 }
 }
 
 var skelly = true;
-var search_skelly = function(){
-	if (current_player.currentRoom.name == bedroom) {
-		if(skelly){
+var search_loot = function(){
+	if (current_player.currentRoom.name == "bedroom") {
+		if(skelly == true){
 			add_line("You search the skeleton. You find a Death Claw.");
-			search_skelly = false;
+			skelly = false;
 			add_inventory(current_player.name, "Death Claw");
 		}
 		else{
-			add_line("You've already searched the skeleton. You find nothing new.");
+			add_line("You already searched the skeleton. You find nothing new.");
 		}
 	}
 }
