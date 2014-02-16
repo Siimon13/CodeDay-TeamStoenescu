@@ -9,7 +9,7 @@ userAgent.start();
 read_message();
 
 function send_message(data){
-	var new_message = tostring(data);//document.getElementById("txtbx").value; WE NEED TO CHANGE THIS
+	var new_message = to_string(data);//document.getElementById("txtbx").value; WE NEED TO CHANGE THIS
 	userAgent.message("messages@codeday.onsip.com",new_message);
 
 }
@@ -18,7 +18,7 @@ function read_message(){
 	var conf = new SIP.UA('messages@codeday.onsip.com').
 		on('message', function (message){
 			if(message){
-				var info = tolist(message);
+				var info = to_list(message);
 				// decide whether to play a sound
 				// if we should play a sound according to the data
 				for (var string in info) {
@@ -46,12 +46,12 @@ function read_message(){
 	
 }
 
-function tolist(string) {
+function to_list(string) {
 	var ans = string.split(" ");
 	return ans;
 }
 
-function tostring(list) {
+function to_string(list) {
 	var ans = list.join(" ");
 	return ans;
 }
