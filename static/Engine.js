@@ -101,7 +101,7 @@ var move_room = function(xplayer, xroom, button){
 				if (game_rooms[j].name == xroom) {
 					current_player.currentRoom = game_rooms[j];
 					room_move_count++;
-					timemove = 5000//1000 *(((current_player.currentRoom.length + current_player.currentRoom.width) / 4) + timemove);
+					timemove = 5//1000 *(((current_player.currentRoom.length + current_player.currentRoom.width) / 4) + timemove);
 					highlight(button,(timemove)); 
 					timewait = true;
 					setTimeout(function(){timewait = false}, timemove);
