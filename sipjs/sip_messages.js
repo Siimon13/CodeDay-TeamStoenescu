@@ -17,7 +17,7 @@ function read_message(){
 	var conf = new SIP.UA('messages@codeday.onsip.com').
 		on('message', function (message){
 			if(message){
-			messages = messages+message.body+"<br>";
+			messages = message.body+"<br>"+messages;
 			document.getElementById("stuff").innerHTML=messages;
 			}
 		})
