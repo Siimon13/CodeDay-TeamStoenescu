@@ -9,7 +9,7 @@ userAgent.start();
 read_message();
 
 function send_message(data){
-	var new_message = tostring(data);//document.getElementById("txtbx").value; WE NEED TO CHANGE THIS
+	var new_message = to_string(data);//document.getElementById("txtbx").value; WE NEED TO CHANGE THIS
 	userAgent.message("messages@codeday.onsip.com",new_message);
 
 }
