@@ -30,16 +30,27 @@
 		{% endfor %}
 
 
-		<button type="button" onclick="move_room('player_1','hallway',this); ">Move Hallway</button>
-		<button type="button" onclick="move_room('player_1','living_room',this); ">Move Living</button>
-		<button type="button" onclick="move_room('player_1','foyer',this); ">Move Foyer</button>
-		<button type="button" onclick="move_room('player_1','bathroom',this); ">Move Bathroom</button>
-		<button type="button" onclick="move_room('player_1','bedroom',this); ">Move Bedroom</button>
-		<button type="button" onclick="move_room('player_1','closet',this); ">Move Closet</button>
-		<button type="button" onclick="move_room('player_1','kitchen',this); ">Move Kitchen</button>
-		<button type="button" onclick=test()>Time Test</button>
-		<button type="button" onclick=show_inventory()>Inventory</button>
-		<button type="button" onclick=search_skelly()>Search Skeleton</button>
+		<button id="hallway" type="button" onclick="move_room('player_1','hallway',this); ">Move Hallway</button>
+		<button id="living_room" type="button" onclick="move_room('player_1','living_room',this); ">Move Living</button>
+		<button id="foyer" type="button" onclick="move_room('player_1','foyer',this); ">Move Foyer</button>
+		<button id="bathroom" type="button" onclick="move_room('player_1','bathroom',this); ">Move Bathroom</button>
+		<button id="bedroom" type="button" onclick="move_room('player_1','bedroom',this); ">Move Bedroom</button>
+		<button id="closet" type="button" onclick="move_room('player_1','closet',this); ">Move Closet</button>
+		<button id="kitchen" type="button" onclick="move_room('player_1','kitchen',this); ">Move Kitchen</button>
+		<button id="time" type="button" onclick=test()>Time Test</button>
+		<button id="inventory" type="button" onclick=show_inventory()>Inventory</button>
+		<button id="search" type="button" onclick=search_skelly()>Search Skeleton</button>
+
+		<button id="hallway" type="button" onclick=move_room("player_1","hallway")>Move Hallway</button>
+<button id="living_room" type="button" onclick=move_room("player_1","living_room")>Move Living</button>
+<button id="foyer" type="button" onclick=move_room("player_1","foyer")>Move Foyer</button>
+<button id="bathroom" type="button" onclick=move_room("player_1","bathroom")>Move Bathroom</button>
+<button id="bedroom" type="button" onclick=move_room("player_1","bedroom")>Move Bedroom</button>
+<button id="closet" type="button" onclick=move_room("player_1","closet")>Move Closet</button>
+<button id="kitchen" type="button" onclick=move_room("player_1","kitchen")>Move Kitchen</button>
+<button id="time" type="button" onclick=test()>Time Test</button>
+<button id="inventory" type="button" onclick=show_inventory()>Inventory</button>
+<button id="search"
 	</div>
 	<div class="column" id="three">
 		<fieldset>

@@ -1,9 +1,3 @@
-
-
-
-
-
-
 function room(name,length,width,doors,events){
 	this.name = name;
 	this.length = length;
@@ -86,7 +80,7 @@ var play_sound = function(num){
 
 	//document.getElementById("myDiv").innerHTML = document.getElementById("myDiv").innerHTML + room_that_hear_sound;
 }
-
+roomcheck1 = true;
 var move_room = function(xplayer, xroom, button){
 
 	var timemove = (current_player.currentRoom.length + current_player.currentRoom.width) / 4;
@@ -119,10 +113,28 @@ var move_room = function(xplayer, xroom, button){
 					add_line("You edge into the room, and almost trip over the skeleton. You almost scream again, but manage to clamp your hand in front of your mouth.");
 
 				}
+				changeDisplay(current_player.currentRoom);	
 			}
 
 		}
 	};
+}
+
+var changeDisplay = function(xroom){
+for(var i = 0; i < game_rooms.length; i++){
+	if(xroom.doors.indexOf(game_rooms[i].name) > -1){
+		document.getElementById(game_rooms[i].name).style.display="inline";
+	}
+	else{
+		document.getElementById(game_rooms[i].name).style.display="none";
+	}
+}
+if(current_player.currentRoom.name == "bedroom"){
+	document.getElementById("search").style.display="inline";
+}
+else{
+	document.getElementById("search").style.display="none";
+}
 }
 
 var skelly = true;
