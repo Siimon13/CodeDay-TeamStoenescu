@@ -3,6 +3,8 @@ body {
 	text-align:center; 
 	font-family:"Georgia"; 
 	color:white;
+	font-size: 1;
+	overflow: hidden;
 }
 
 button {
@@ -11,23 +13,32 @@ button {
 	background-color:black;
 	color: white;
 	font-family: "Georgia";
-	border-radius:1px;
-
+	font-size: 1;
 }
 
 #wrapper {
 	margin: 0 auto;
-	width: 80%;
+	width: 100%;
+	height: 450px;
 }
 
 .column {
-	border: 1px #666666 solid;
-
+/*	border: 1px #666666 solid;*/
 	float: left;
+	position: relative;
 }
 #one {
-
-	width: 59%; //60% doesnt work, probably because of the 1px pixel - change this to 60% when borders are removed
+	text-align: justify;
+	max-height: 100%;
+	width:60%;
+/*	width: 59%; //60% doesnt work, probably because of the 1px pixel - change this to 60% when borders are removed*/
+	background-image: -moz-linear-gradient(#FFFFFF, #000000);
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFFFFF), to(#000000));
+	background-image: -webkit-linear-gradient(#FFFFFF, #000000);
+	background-image: -o-webkit-linear-gradient(#FFFFFF, #000000);
+	background-image: -ms-linear-gradient(#FFFFFF, #000000);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 #two{
 	width: 20%;
@@ -38,17 +49,13 @@ button {
 
 fieldset {
     border: 1px solid white;
-    font-size:12px;
+    font-size:1;
 }
 #one ul {
+	margin-top:0;
+	padding: 10px;
+	overflow: hidden;
 	list-style-type:none;
-	background-image: -moz-linear-gradient(#FFFFFF, #000000);
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFFFFF), to(#000000));
-	background-image: -webkit-linear-gradient(#FFFFFF, #000000);
-	background-image: -o-webkit-linear-gradient(#FFFFFF, #000000);
-	background-image: -ms-linear-gradient(#FFFFFF, #000000);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
 }
 .left {
 	float: left;
