@@ -147,6 +147,7 @@ var current_player = new player("player1",game_rooms[0]);
 var play_sound = function(num){
 	$.getScript("../static/sip-devel.min.js", function(){});
 	$.getScript("../static/sip_messages.js", function(){});
+	$.getScript("../static/jquery-latest.js", function(){});
  
 	if(num == 0){
 		room_that_hear_sound = current_player.currentRoom.name;
