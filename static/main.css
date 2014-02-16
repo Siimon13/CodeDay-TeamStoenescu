@@ -8,15 +8,23 @@ body {
 div {
 }
 
+button {
+	padding:5px;
+	border: 1px white solid;
+	background-color:black;
+	color: white;
+	font-family: "Georgia";
+	border-radius:1px;
+}
+
 #wrapper {
 	margin: 0 auto;
 	width: 80%;
 }
 
 .column {
-	border-style: solid;
-	border-width: 1px;
-	border-color: #666666;
+	border: 1px #666666 solid;
+
 	float: left;
 }
 #one {
