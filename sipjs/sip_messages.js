@@ -1,19 +1,22 @@
+
 var message;
-var
+var userAgent;
 
-function register() {
-	userAgent.start();
+userAgent=new SIP.UA ();
+userAgent.start();
+read_message();
 
-	document.getElementb=ById('send').addEventListener("click", function()) {
-		userAgent.message("messages@codeday.onsip.com")
-	}
+function send_message(){
+	var new_message = document.getElementById("txtbx").value;
+	userAgent.message("messages@codeday.onsip.com",new_message);
 
-	conf = new SIP.UA
 }
 
 function read_message(){
 	var conf = new SIP.UA('messages@codeday.onsip.com').
-		on('message', function (message)){
-			
-		}
+		on('message', function (message){
+			alert(message.body);
+		})
+
+		conf.start();
 }
