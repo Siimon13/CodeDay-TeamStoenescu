@@ -167,12 +167,12 @@ var play_sound = function(num){
 	if(num == 2){
 		room_that_hear_sound = game_rooms;
 	}
-	var sound = "whatthefuck";
+	var list = "ifyougetthis you just faileedddddd"
 	if (current_player.currentRoom.name == "bedroom") {
-		sound = "scream";
+		var list = room_that_hear_sound.push("scream");
 	}
 	if (current_player.currentRoom.name == "closet") {
-		sound = "twig";
+		var list = room_that_hear_sound.push("twig");
 	}
 
 	var list = room_that_hear_sound.push(sound);
