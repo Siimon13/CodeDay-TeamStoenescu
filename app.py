@@ -1,43 +1,6 @@
 from flask import Flask, render_template
-from pymongo import MongoClient
-client = MongoClient()
-client = MongoClient('localhost', 27017)
 
 app = Flask(__name__)
-
-@app.route('/get', methods = ["GET"])
-    #here you should be able to receive event data from client
-    #recieve event struct? yeah, and put in database
-
-    #if database gets new event, then send to client that new event
-
-    #!!! THIS IS REALLY HARD ^ ^ ^ RIGHT THERE ^ ^ ^ FIGURE IT OUT
-def ajaxget():
-    #get current room from db
-    #get destination room from db
-    #^ or just general event info
-    psychothriller = client.psychothriller #this keeps track of events - makes it communal
-    #an event will be in the database for the period of time it is 'alive'
-    #but as soon as it no longer affects anything, it is deleted
-    #im not sure about this
-
-    events = psychothriller.events
-
-    event = events.find_one() #event should be a dict
-    return event #jsonify(event)#event info in form of a string.
-
-@app.route('/post', methods = ["POST"]) #i lied, this is actkualy where u post
-def ajaxpost():
-    psychothriller = client.psychothriller 
-    events = psychothriller.events
-
-    event = events.find_one()
-    #do some magic, edit the event..... and also put it back in database? idk
-    #currently not working
-
-    return jsonify(event) #event info in form of a string
-
-
 
 @app.route('/')
 def login():

@@ -48,7 +48,8 @@ var play_sound = function(num){
 	//document.getElementById("myDiv").innerHTML = document.getElementById("myDiv").innerHTML + room_that_hear_sound;
 }
 
-var move_room = function(xplayer, xroom){
+var move_room = function(xplayer, xroom, button){
+
 	var timemove = (current_player.currentRoom.length + current_player.currentRoom.width) / 4;
 	for (var i = current_player.currentRoom.doors.length - 1; i >= 0; i--){
 		if (timewait) {break}
@@ -58,6 +59,7 @@ var move_room = function(xplayer, xroom){
 				if (game_rooms[j].name == xroom) {
 					current_player.currentRoom = game_rooms[j];
 					timemove = 1000 *(((current_player.currentRoom.length + current_player.currentRoom.width) / 4) + timemove);
+					highlight(button,(timemove / 1000)); 	
 					timewait = true;
 					setTimeout(function(){timewait = false}, timemove);
 				}
