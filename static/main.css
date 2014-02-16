@@ -1,11 +1,8 @@
 body {
 	background-color:#000000;
 	text-align:center; 
-    font-family:"Georgia"; 
-    color:white;
-}
-
-div {
+	font-family:"Georgia"; 
+	color:white;
 }
 
 button {
@@ -15,6 +12,7 @@ button {
 	color: white;
 	font-family: "Georgia";
 	border-radius:1px;
+
 }
 
 #wrapper {
@@ -28,11 +26,22 @@ button {
 	float: left;
 }
 #one {
-	width: 59%; //60% doesnt work, probably because of the 1px pixel
+
+	width: 59%; //60% doesnt work, probably because of the 1px pixel - change this to 60% when borders are removed
 }
 #two{
 	width: 20%;
 }
 #three{
 	width: 20%;
+}
+#one ul {
+	list-style-type:none;
+	background-image: -moz-linear-gradient(#FFFFFF, #000000);
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFFFFF), to(#000000));
+	background-image: -webkit-linear-gradient(#FFFFFF, #000000);
+	background-image: -o-webkit-linear-gradient(#FFFFFF, #000000);
+	background-image: -ms-linear-gradient(#FFFFFF, #000000);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
