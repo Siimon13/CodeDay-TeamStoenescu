@@ -49,6 +49,15 @@ var play_sound = function(num){
 	if(num == 2){
 		room_that_hear_sound = game_rooms;
 	}
+	if (current_player.currentRoom.name == "bedroom") {
+		var sound = "scream";
+	}
+	if (current_player.currentRoom.name == "closet") {
+		var sound = "twig";
+	}
+	var list = room_that_hear_sound.push(sound);
+	sendmessage(list); // should send message
+
 	if($.contains(current_player.currentRoom.name, room_that_hear_sound) != -1 && num != 0){
 		// either twig or scream....
 		if (current_player.currentRoom.name == "bedroom") {
@@ -60,6 +69,8 @@ var play_sound = function(num){
 			audio.play();
 		}
 	}
+
+
 	//document.getElementById("myDiv").innerHTML = document.getElementById("myDiv").innerHTML + room_that_hear_sound;
 }
 
