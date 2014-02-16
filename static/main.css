@@ -48,7 +48,9 @@ button {
 	width: 20%;
 }
 #three{
-	width: 20%;
+	margin: 5px;
+	width: 18%;
+	font-size:16px;
 }
 
 fieldset {

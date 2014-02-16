@@ -87,6 +87,8 @@ var play_sound = function(num){
 
 	//document.getElementById("myDiv").innerHTML = document.getElementById("myDiv").innerHTML + room_that_hear_sound;
 }
+
+var room_move_count = 0;
 roomcheck1 = true;
 livingcheck1 = true;
 var move_room = function(xplayer, xroom, button){
@@ -98,7 +100,8 @@ var move_room = function(xplayer, xroom, button){
 			for (var j = game_rooms.length - 1; j >= 0; j--) {
 				if (game_rooms[j].name == xroom) {
 					current_player.currentRoom = game_rooms[j];
-					timemove = 1000 *(((current_player.currentRoom.length + current_player.currentRoom.width) / 4) + timemove);
+					room_move_count++;
+					timemove = 5//1000 *(((current_player.currentRoom.length + current_player.currentRoom.width) / 4) + timemove);
 					highlight(button,(timemove / 1000)); 
 					timewait = true;
 					setTimeout(function(){timewait = false}, timemove);
@@ -122,10 +125,20 @@ var move_room = function(xplayer, xroom, button){
 
 			} 
 			else if(current_player.currentRoom.name == "living_room" && livingcheck1 == true){
-			livingcheck1 = false;
-			add_line("You see a note on the table.");
-
+				livingcheck1 = false;
+				add_line("You see a note on the table.");
 			}
+
+			else if(current_player.currentRoom.name == "bathroom" && switch_flip == true){
+				add_line("As you walk in, you see the shower wall has dissapeared. Where the wall used to be now stands an idol on a pedestal")
+			}
+
+			else if(current_player.currentRoom.name == "living_room"){
+				game_end();
+			}
+				
+
+			
 			changeDisplay(current_player.currentRoom);	
 		}
 
@@ -134,44 +147,53 @@ var move_room = function(xplayer, xroom, button){
 
 var changeDisplay = function(xroom){
 	
-for(var i = 0; i < game_rooms.length; i++){
-	if(xroom.doors.indexOf(game_rooms[i].name) > -1){
-		document.getElementById(game_rooms[i].name).style.display="inline";
-		document.getElementById(game_rooms[i].name).style.color="white";
-		document.getElementById(game_rooms[i].name).style.borderColor="white";
+	for(var i = 0; i < game_rooms.length; i++){
+		if(xroom.doors.indexOf(game_rooms[i].name) > -1){
+			document.getElementById(game_rooms[i].name).style.display="inline";
+			document.getElementById(game_rooms[i].name).style.color="white";
+			document.getElementById(game_rooms[i].name).style.borderColor="white";
+		}
+		else{
+			document.getElementById(game_rooms[i].name).style.color="black";
+			document.getElementById(game_rooms[i].name).style.borderColor="black";
+		}
+		if(current_player.currentRoom.name == "bedroom"){
+			document.getElementById("search").style.display="inline";
+			document.getElementById("search").style.color="white";
+			document.getElementById("search").style.borderColor="white";
+		}
+		else{
+			document.getElementById("search").style.color="black";
+			document.getElementById("search").style.borderColor="black";
+		}
+		if(current_player.currentRoom.name == "living_room" && note_die1 == true){
+			document.getElementById("note1").style.display="inline";
+			document.getElementById("note1").style.color="white";
+			document.getElementById("note1").style.borderColor="white";
+		}
+		else{
+			document.getElementById("note1").style.color="black";
+			document.getElementById("note1").style.borderColor="black";
+		}
+		if(current_player.currentRoom.name == "closet"){
+			document.getElementById("switch").style.display="inline";
+			document.getElementById("switch").style.color="white";
+			document.getElementById("switch").style.borderColor="white";
+		}
+		else{
+			document.getElementById("switch").style.color="black";
+			document.getElementById("switch").style.borderColor="black";
+		}
+		if(current_player.currentRoom.name == "bathroom" && switch_flip == true){
+			document.getElementById("idol").style.display="inline";
+			document.getElementById("idol").style.color="white";
+			document.getElementById("idol").style.borderColor="white";
+		}
+		else{
+			document.getElementById("idol").style.color="black";
+			document.getElementById("idol").style.borderColor="black";
+		}
 	}
-	else{
-		document.getElementById(game_rooms[i].name).style.color="black";
-		document.getElementById(game_rooms[i].name).style.borderColor="black";
-	}
-}
-if(current_player.currentRoom.name == "bedroom"){
-	document.getElementById("search").style.display="inline";
-	document.getElementById("search").style.color="white";
-	document.getElementById("search").style.borderColor="white";
-}
-else{
-	document.getElementById("search").style.color="black";
-	document.getElementById("search").style.borderColor="black";
-}
-if(current_player.currentRoom.name == "living_room" && note_die1 == true){
-document.getElementById("note1").style.display="inline";
-document.getElementById("note1").style.color="white";
-document.getElementById("note1").style.borderColor="white";
-}
-else{
-document.getElementById("note1").style.color="black";
-document.getElementById("note1").style.borderColor="black";
-}
-if(current_player.currentRoom.name == "closet"){
-document.getElementById("switch").style.display="inline";
-document.getElementById("switch").style.color="white";
-document.getElementById("switch").style.borderColor="white";
-}
-else{
-document.getElementById("switch").style.color="black";
-document.getElementById("switch").style.borderColor="black";
-}
 }
 
 
@@ -179,13 +201,13 @@ document.getElementById("switch").style.borderColor="black";
 
 var note_die1 = true;
 var read_note1 = function(){
-if (note_die1 == true && current_player.currentRoom.name == "living_room") {
-note_die1 = false;
-add_line("You read the note.")
-setTimeout(function(){add_line("My claws. They took my claws. I will rip out their souls. I want my claws.")}, 600);
-setTimeout(function(){add_line("The note disintergrates in your hand.")}, 3000);
-changeDisplay(current_player.currentRoom)
-}
+	if (note_die1 == true && current_player.currentRoom.name == "living_room") {
+		note_die1 = false;
+		add_line("You read the note.")
+		setTimeout(function(){add_line("My claws. They took my claws. I will rip out their souls. I want my claws.")}, 600);
+		setTimeout(function(){add_line("The note disintergrates in your hand.")}, 3000);
+		changeDisplay(current_player.currentRoom)
+	}
 }
 
 var skelly = true;
@@ -213,13 +235,31 @@ var trigger_switch = function() {
 		add_line("You push a rusty switch. It is difficult to move.")
 }
 }
+var idol_take = true;
+var bathroom_trigger = function() {
+	if(idol_take == true && switch_flip == true && current_player.currentRoom.name == "bathroom"){
+		add_line("You take the idol from the stand.")
+		idol_take = false;
+		add_inventory(current_player.name,"Cursed Idol")
+	}
+	else if(idol_take == false){
+		add_line("The pedestal is now bare, as the idol is now gone.")
+	}
+}
+
+var game_end = function(){
+	if(player.inventory.indexOf("Death ClawCursed Idol") != -1 || player.inventory.indexOf("Cursed IdolDeath Claw") != -1){
+		add_line("As you enter the room, a giant harpie greets you. 'I see you have my treasures' she says with a grin. 'What will I ever do with you?'")
+		changeDisplay("junk")
+	}
+}
 
 var add_inventory = function(player_name, item){
 	if(current_player.inventory == 0){
 		current_player.inventory = item;
 	}
 	else{
-		current_player.inventory = [current_player.inventory, item];
+		current_player.inventory = current_player.inventory + item;
 	}
 	document.getElementById("inv").innerHTML += item;
 }
