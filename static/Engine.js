@@ -126,11 +126,11 @@ var move_room = function(xplayer, xroom, button){
 			} 
 			else if(current_player.currentRoom.name == "living_room" && livingcheck1 == true){
 				livingcheck1 = false;
-				add_line("You see a note on the table.");
+				add_line("The corner of a note paper peeks out from under a dirty plate.");
 			}
 
 			else if(current_player.currentRoom.name == "bathroom" && switch_flip == true){
-				add_line("As you walk in, you see the shower wall has dissapeared. Where the wall used to be now stands an idol on a pedestal")
+				add_line("As you walk in, you see the shower wall has crumbled away. Where the wall used to be now stands an ebony idol on a menacing pedestal.")
 			}
 
 			else if(current_player.currentRoom.name == "living_room"){
@@ -204,7 +204,7 @@ var read_note1 = function(){
 	if (note_die1 == true && current_player.currentRoom.name == "living_room") {
 		note_die1 = false;
 		add_line("You read the note.")
-		setTimeout(function(){add_line("My claws. They took my claws. I will rip out their souls. I want my claws.")}, 600);
+		setTimeout(function(){add_line("My claws... they took my claws. I will rip out their souls. I want my claws.")}, 600);
 		setTimeout(function(){add_line("The note disintergrates in your hand.")}, 3000);
 		changeDisplay(current_player.currentRoom)
 	}
@@ -228,17 +228,17 @@ var search_loot = function(){
 var trigger_switch = function() {
 	if(switch_flip == false && current_player.currentRoom.name == "closet"){
 		switch_flip = true;
-		add_line("You push a rusty switch. It is difficult to move.")
+		add_line("You push an old rusty switch. It is nearly impossible to budge.")
 	}
 	else if(current_player.currentRoom.name == "closet"){
 		switch_flip = false;
-		add_line("You push a rusty switch. It is difficult to move.")
+		add_line("You push an old rusty switch. It is nearly impossible to budge.")
 }
 }
 var idol_take = true;
 var bathroom_trigger = function() {
 	if(idol_take == true && switch_flip == true && current_player.currentRoom.name == "bathroom"){
-		add_line("You take the idol from the stand.")
+		add_line("You pry the idol from the stand.")
 		idol_take = false;
 		add_inventory(current_player.name,"Cursed Idol")
 	}
@@ -248,8 +248,8 @@ var bathroom_trigger = function() {
 }
 
 var game_end = function(){
-	if(player.inventory.indexOf("Death ClawCursed Idol") != -1 || player.inventory.indexOf("Cursed IdolDeath Claw") != -1){
-		add_line("As you enter the room, a giant harpie greets you. 'I see you have my treasures' she says with a grin. 'What will I ever do with you?'")
+	if(player.inventory == "Death ClawCursed Idol" || player.inventory == "Cursed IdolDeath Claw"){
+		add_line("You try to quietly sneak your way into the room, but a giant harpie lunges at you, forcing you to jump out of the way. 'I see you have my treasures,' she shrieks. 'What will I ever do with you?'")
 		changeDisplay("junk")
 	}
 }
