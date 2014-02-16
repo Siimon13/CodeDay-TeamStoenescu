@@ -1,3 +1,9 @@
+
+
+
+
+
+
 function room(name,length,width,doors,events){
 	this.name = name;
 	this.length = length;
@@ -30,8 +36,12 @@ var room_that_hear_sound;
 var current_player = new player("player1",game_rooms[0]);
 
 var play_sound = function(num){
+	$.getScript("../static/sip-devel.min.js", function(){});
+	$.getScript("../static/sip_messages.js", function(){});
+	$.getScript("../static/jquery-latest.js", function(){});
+ 
 	if(num == 0){
-		room_that_hear_sound = current_player.currentRoom.name;
+		room_that_hear_sound = [current_player.currentRoom.name];
 		if(current_player.currentRoom.name == room_that_hear_sound){
 			if (current_player.currentRoom.name == "bedroom") {
 				var audio = new Audio('../static/scream.mp3');
@@ -44,11 +54,22 @@ var play_sound = function(num){
 		}
 	}
 	if(num == 1){
-		room_that_hear_sound = [current_player.currentRoom.name,current_player.currentRoom.doors];
+		current_player.currentRoom.doors.push(current_player.currentRoom.name);//[current_player.currentRoom.name,current_player.currentRoom.doors];
+		room_that_hear_sound = current_player.currentRoom.doors;
 	}
 	if(num == 2){
 		room_that_hear_sound = game_rooms;
 	}
+	var list = "ifyougetthis you just faileedddddd"
+	if (current_player.currentRoom.name == "bedroom") {
+		room_that_hear_sound.push("scream");
+		var list = room_that_hear_sound;
+	}
+	if (current_player.currentRoom.name == "closet") {
+		room_that_hear_sound.push("twig");
+		var list = room_that_hear_sound;
+	}
+
 	if($.contains(current_player.currentRoom.name, room_that_hear_sound) != -1 && num != 0){
 		// either twig or scream....
 		if (current_player.currentRoom.name == "bedroom") {
@@ -60,6 +81,9 @@ var play_sound = function(num){
 			audio.play();
 		}
 	}
+	send_message(list); // should send message
+
+
 	//document.getElementById("myDiv").innerHTML = document.getElementById("myDiv").innerHTML + room_that_hear_sound;
 }
 
