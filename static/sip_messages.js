@@ -18,7 +18,7 @@ function read_message(){
 	var conf = new SIP.UA('messages@codeday.onsip.com').
 		on('message', function (message){
 			if(message){
-				var info = tolist(message);
+				var info = tolist(message.body);
 				// decide whether to play a sound
 				// if we should play a sound according to the data
 				for (var string in info) {
