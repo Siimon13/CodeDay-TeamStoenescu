@@ -49,7 +49,7 @@ var play_sound = function(num){
 	if(num == 3){
 		room_that_hear_sound = game_rooms;
 	}
-	if($.contains(current_player.currentRoom.name, room_that_hear_sound) != -1 && num != 0){
+	if($.contains(current_player.currentRoom.name, room_that_hear_sound) != -1 && num != 1){
 		alert("Sounded")
 	}
 	//document.getElementById("myDiv").innerHTML = document.getElementById("myDiv").innerHTML + room_that_hear_sound;
@@ -88,8 +88,26 @@ var move_room = function(xplayer, xroom){
 					add_line(". You walk into the room and see the skeleton. You calm yourself, as you saw it before.");
 
 				}
+			changeDisplay(current_player.currentRoom);	
 			}
 	}
+}
+
+var changeDisplay = function(xroom){
+for(var i = 0; i < game_rooms.length; i++){
+	if(xroom.doors.indexOf(game_rooms[i].name) > -1){
+		document.getElementById(game_rooms[i].name).style.display="inline";
+	}
+	else{
+		document.getElementById(game_rooms[i].name).style.display="none";
+	}
+}
+if(current_player.currentRoom.name == "bedroom"){
+	document.getElementById("search").style.display="inline";
+}
+else{
+	document.getElementById("search").style.display="none";
+}
 }
 
 var skelly = true;
