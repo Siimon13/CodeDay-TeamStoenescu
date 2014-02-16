@@ -33,7 +33,14 @@ var play_sound = function(num){
 	if(num == 0){
 		room_that_hear_sound = current_player.currentRoom.name;
 		if(current_player.currentRoom.name == room_that_hear_sound){
-			alert("Sound Played");
+			if (current_player.currentRoom.name == "bedroom") {
+				var audio = new Audio('../static/scream.mp3');
+				audio.play();
+			}
+			else {
+				var audio = new Audio('../static/twig.mp3');
+				audio.play();
+			}
 		}
 	}
 	if(num == 1){
@@ -43,7 +50,15 @@ var play_sound = function(num){
 		room_that_hear_sound = game_rooms;
 	}
 	if($.contains(current_player.currentRoom.name, room_that_hear_sound) != -1 && num != 0){
-		alert("Sounded")
+		// either twig or scream....
+		if (current_player.currentRoom.name == "bedroom") {
+			var audio = new Audio('../static/scream.mp3');
+			audio.play();
+		}
+		else {
+			var audio = new Audio('../static/twig.mp3');
+			audio.play();
+		}
 	}
 	//document.getElementById("myDiv").innerHTML = document.getElementById("myDiv").innerHTML + room_that_hear_sound;
 }
@@ -58,7 +73,7 @@ var move_room = function(xplayer, xroom, button){
 			for (var j = game_rooms.length - 1; j >= 0; j--) {
 				if (game_rooms[j].name == xroom) {
 					current_player.currentRoom = game_rooms[j];
-					timemove = 1000 *(((current_player.currentRoom.length + current_player.currentRoom.width) / 4) + timemove);
+					timemove = 500 *(((current_player.currentRoom.length + current_player.currentRoom.width) / 4) + timemove);
 					highlight(button,(timemove / 1000)); 	
 					timewait = true;
 					setTimeout(function(){timewait = false}, timemove);
