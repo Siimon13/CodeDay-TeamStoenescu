@@ -37,20 +37,17 @@
 		<button id="bedroom" type="button" onclick="move_room('player_1','bedroom',this); ">open bedroom door</button><br>
 		<button id="closet" type="button" onclick="move_room('player_1','closet',this); ">open closet door</button><br>
 		<button id="kitchen" type="button" onclick="move_room('player_1','kitchen',this); ">open kitchen door</button><br>
-		
-		<button id="inventory" type="button" onclick=show_inventory()>check inventory</button><br>
+		<!--button id="inventory" type="button" onclick=show_inventory()>check inventory</button><br-->
+		<button id="switch" type="button" onclick=trigger_switch()>flip switch</button><br>
 		<button id="search" type="button" onclick=search_loot()>search skeleton</button><br>
 		<button id="note1" type="button" onclick=read_note1()>read note</button>
 
 	</div>
-	<div class="column" id="three">
-		<fieldset>
+		<div class="column" id="three">
+		<fieldset id="inv">
 			<legend align="left">inventory</legend>
-			<span class="left">item</span><span class="right">number</span><br>
-			<span class="left">item</span><span class="right">number</span><br>
-			<span class="left">item</span><span class="right">number</span><br>
-			<span class="left">item</span><span class="right">number</span>
+			
 		</fieldset>
-	</div>
+	</div> 
 </div>
 </body>

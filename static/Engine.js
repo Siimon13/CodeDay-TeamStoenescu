@@ -8,7 +8,7 @@ function room(name,length,width,doors,events){
 var game_rooms = [
 	new room("kitchen",4,4,["hallway","living_room"]),
 	new room("bathroom",2,2,["hallway"]),
-	new room("living_room",5,5,["hallway","foyer","living_room"]),
+	new room("living_room",5,5,["hallway","foyer"]),
 	new room("closet",1,1,["bedroom"]),
 	new room("hallway",8,2,["kitchen","living_room","bathroom","bedroom"]),
 	new room("bedroom",4,6,["closet","hallway"]),
@@ -163,7 +163,15 @@ else{
 document.getElementById("note1").style.color="black";
 document.getElementById("note1").style.borderColor="black";
 }
-
+if(current_player.currentRoom.name == "closet"){
+document.getElementById("switch").style.display="inline";
+document.getElementById("switch").style.color="white";
+document.getElementById("switch").style.borderColor="white";
+}
+else{
+document.getElementById("switch").style.color="black";
+document.getElementById("switch").style.borderColor="black";
+}
 }
 
 
@@ -181,6 +189,7 @@ changeDisplay(current_player.currentRoom)
 }
 
 var skelly = true;
+var switch_flip = false;
 var search_loot = function(){
 	if (current_player.currentRoom.name == "bedroom") {
 		if(skelly == true){
@@ -194,6 +203,17 @@ var search_loot = function(){
 	}
 }
 
+var trigger_switch = function() {
+	if(switch_flip == false && current_player.currentRoom.name == "closet"){
+		switch_flip = true;
+		add_line("You push a rusty switch. It is difficult to move.")
+	}
+	else if(current_player.currentRoom.name == "closet"){
+		switch_flip = false;
+		add_line("You push a rusty switch. It is difficult to move.")
+}
+}
+
 var add_inventory = function(player_name, item){
 	if(current_player.inventory == 0){
 		current_player.inventory = item;
@@ -201,6 +221,7 @@ var add_inventory = function(player_name, item){
 	else{
 		current_player.inventory = [current_player.inventory, item];
 	}
+	document.getElementById("inv").innerHTML += item;
 }
 
 var show_inventory = function(){
@@ -209,6 +230,17 @@ var show_inventory = function(){
 	}
 	else{
 	document.getElementById("myDiv").innerHTML = current_player.inventory;
+}
+}
+
+var remove_inventory = function(player_name,item){
+if(current_player.inventory.length == 1){
+current_player.inventory = 0;
+}
+else{
+var x = current_player.inventory.indexOf(item);
+splice(x,1);
+
 }
 }
 

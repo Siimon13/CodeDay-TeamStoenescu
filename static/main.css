@@ -21,7 +21,7 @@ button {
 
 #wrapper {
 	margin: 0 auto;
-	width: 100%;
+	width: 70%;
 	height: 40em;
 }
 
@@ -54,6 +54,7 @@ button {
 fieldset {
     border: 1px solid white;
     font-size:1;
+    text-align: left:;
 }
 #one ul {
 	margin-top:0;
