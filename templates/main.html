@@ -19,7 +19,7 @@
 	<div id="wrapper"> 
 		<div class="column" id="one">
 			<ul id="events"><!--Fill this using jinja when we have the real list of events -->
-				<li>You are in the kitchen.</li>
+				<li>You are in the foyer.</li>
 		</ul>
 	</div>
 
@@ -30,16 +30,17 @@
 		{% endfor %}-->
 
 
-		<button id="hallway" type="button" onclick="move_room('player_1','hallway',this); ">Move Hallway</button>
-		<button id="living_room" type="button" onclick="move_room('player_1','living_room',this); ">Move Living</button>
-		<button id="foyer" type="button" onclick="move_room('player_1','foyer',this); ">Move Foyer</button>
-		<button id="bathroom" type="button" onclick="move_room('player_1','bathroom',this); ">Move Bathroom</button>
-		<button id="bedroom" type="button" onclick="move_room('player_1','bedroom',this); ">Move Bedroom</button>
-		<button id="closet" type="button" onclick="move_room('player_1','closet',this); ">Move Closet</button>
-		<button id="kitchen" type="button" onclick="move_room('player_1','kitchen',this); ">Move Kitchen</button>
-		<button id="time" type="button" onclick=test()>Time Test</button>
-		<button id="inventory" type="button" onclick=show_inventory()>Inventory</button>
-		<button id="search" type="button" onclick=search_loot()>Search Skeleton</button>
+		<button id="hallway" type="button" onclick="move_room('player_1','hallway',this); ">open hallway door</button><br>
+		<button id="living_room" type="button" onclick="move_room('player_1','living_room',this); ">open living room door</button><br>
+		<button id="foyer" type="button" onclick="move_room('player_1','foyer',this); ">open foyer door</button><br>
+		<button id="bathroom" type="button" onclick="move_room('player_1','bathroom',this); ">open bathroom door</button><br>
+		<button id="bedroom" type="button" onclick="move_room('player_1','bedroom',this); ">open bedroom door</button><br>
+		<button id="closet" type="button" onclick="move_room('player_1','closet',this); ">open closet door</button><br>
+		<button id="kitchen" type="button" onclick="move_room('player_1','kitchen',this); ">open kitchen door</button><br>
+		
+		<button id="inventory" type="button" onclick=show_inventory()>check inventory</button><br>
+		<button id="search" type="button" onclick=search_loot()>search skeleton</button><br>
+		<button id="note1" type="button" onclick=read_note1()>read note</button>
 
 	</div>
 	<div class="column" id="three">

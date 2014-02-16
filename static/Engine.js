@@ -1,4 +1,3 @@
-
 function room(name,length,width,doors,events){
 	this.name = name;
 	this.length = length;
@@ -35,7 +34,7 @@ var timewait = false;
 
 var room_that_hear_sound;
 
-var current_player = new player("player1",game_rooms[0]);
+var current_player = new player("player1",game_rooms[6]);
 
 var play_sound = function(num){
 	$.getScript("../static/sip-devel.min.js", function(){});
@@ -134,29 +133,37 @@ var move_room = function(xplayer, xroom, button){
 }
 
 var changeDisplay = function(xroom){
+	
 for(var i = 0; i < game_rooms.length; i++){
 	if(xroom.doors.indexOf(game_rooms[i].name) > -1){
 		document.getElementById(game_rooms[i].name).style.display="inline";
-		document.getElementById(game_rooms[i].name).style.display="white";
+		document.getElementById(game_rooms[i].name).style.color="white";
+		document.getElementById(game_rooms[i].name).style.borderColor="white";
 	}
 	else{
-		document.getElementById(game_rooms[i].name).style.display="black";
+		document.getElementById(game_rooms[i].name).style.color="black";
+		document.getElementById(game_rooms[i].name).style.borderColor="black";
 	}
 }
 if(current_player.currentRoom.name == "bedroom"){
 	document.getElementById("search").style.display="inline";
-	document.getElementById(game_rooms[i].name).style.display="white";
+	document.getElementById("search").style.color="white";
+	document.getElementById("search").style.borderColor="white";
 }
 else{
-	document.getElementById(game_rooms[i].name).style.display="black";
+	document.getElementById("search").style.color="black";
+	document.getElementById("search").style.borderColor="black";
 }
 if(current_player.currentRoom.name == "living_room" && note_die1 == true){
 document.getElementById("note1").style.display="inline";
-document.getElementById(game_rooms[i].name).style.display="white";
+document.getElementById("note1").style.color="white";
+document.getElementById("note1").style.borderColor="white";
 }
 else{
-document.getElementById(game_rooms[i].name).style.display="black";
+document.getElementById("note1").style.color="black";
+document.getElementById("note1").style.borderColor="black";
 }
+
 }
 
 
@@ -164,7 +171,7 @@ document.getElementById(game_rooms[i].name).style.display="black";
 
 var note_die1 = true;
 var read_note1 = function(){
-if (note_die1 == true) {
+if (note_die1 == true && current_player.currentRoom.name == "living_room") {
 note_die1 = false;
 add_line("You read the note.")
 setTimeout(function(){add_line("My claws. They took my claws. I will rip out their souls. I want my claws.")}, 600);
@@ -212,6 +219,10 @@ var add_line = function(toshow){
         container.insertBefore(new_element, container.firstChild);
      //$(container).prepend("<li>" + toshow + "</li>");
 }
+
+$(document).ready(function() {
+	changeDisplay(game_rooms[6]);
+});
 		
 /////////////////////////////////////////////////////////////
 

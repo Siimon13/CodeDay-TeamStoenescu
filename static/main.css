@@ -9,11 +9,14 @@ body {
 
 button {
 	padding:5px;
+	width: 140px;
+	height: 30px;
 	border: 1px white solid;
 	background-color:black;
 	color: white;
 	font-family: "Times New Roman";
-	font-size: 1;
+	font-size: 14px;
+
 }
 
 #wrapper {
