@@ -9,7 +9,7 @@ var game_rooms = [
 	new room("kitchen",4,4,["hallway","living_room"]),
 	new room("bathroom",2,2,["hallway"]),
 	new room("living_room",5,5,["hallway","foyer"]),
-	new room("closet",1,1,["bedroom"]),
+	new room("closet",2,2,["bedroom"]),
 	new room("hallway",8,2,["kitchen","living_room","bathroom","bedroom"]),
 	new room("bedroom",4,6,["closet","hallway"]),
 	new room("foyer",2,2,["living_room"]),
