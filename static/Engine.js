@@ -73,26 +73,26 @@ var move_room = function(xplayer, xroom, button){
 			for (var j = game_rooms.length - 1; j >= 0; j--) {
 				if (game_rooms[j].name == xroom) {
 					current_player.currentRoom = game_rooms[j];
-					timemove = 500 *(((current_player.currentRoom.length + current_player.currentRoom.width) / 4) + timemove);
+					timemove = 1000 *(((current_player.currentRoom.length + current_player.currentRoom.width) / 4) + timemove);
 					highlight(button,(timemove / 1000)); 	
 					timewait = true;
 					setTimeout(function(){timewait = false}, timemove);
 				}
 			};
 			//return current_player.currentRoom.doors;
-			add_line("You moved into the " + xroom + " with a delay of " + timemove + ".");
+			add_line("You tiptoe into the " + xroom + ".");// + " with a delay of " + timemove + ".");
 			if(current_player.currentRoom.events != false){
 				if(current_player.currentRoom.events == "sticks"){
-					add_line(". You step on some sticks as you walk in.");
+					add_line("As you push carefully into this room, you tread on some twigs on the ground.");
 					play_sound(0);
 				}
 				else if(current_player.currentRoom.events == "skeletonScream"){
 					current_player.currentRoom.events = "skeletonNoScream";
-					add_line(". You walk into the room and see the skeleton. You scream in fright.");
+					add_line("You creep into the room, and a skeleton falls across your path in front of you.");
 					play_sound(1);
 				}
 				else if(current_player.currentRoom.events == "skeletonNoScream"){
-					add_line(". You walk into the room and see the skeleton. You calm yourself, as you saw it before.");
+					add_line("You edge into the room, and almost trip over the skeleton. You almost scream again, but manage to clamp your hand in front of your mouth.");
 
 				}
 			}
@@ -110,7 +110,7 @@ var search_skelly = function(){
 			add_inventory(current_player.name, "Death Claw");
 		}
 		else{
-			add_line("You already searched the skeleton. You find nothing new.");
+			add_line("You've already searched the skeleton. You find nothing new.");
 		}
 	}
 }
