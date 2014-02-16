@@ -35,6 +35,11 @@ button {
 #three{
 	width: 20%;
 }
+
+fieldset {
+    border: 1px solid white;
+    font-size:12px;
+}
 #one ul {
 	list-style-type:none;
 	background-image: -moz-linear-gradient(#FFFFFF, #000000);
@@ -44,4 +49,10 @@ button {
 	background-image: -ms-linear-gradient(#FFFFFF, #000000);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
+}
+.left {
+	float: left;
+}
+.right{
+	float: right;
 }
