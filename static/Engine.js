@@ -185,7 +185,7 @@ var play_sound = function(num){
 			audio.play();
 		}
 	}
-	sendmessage(list); // should send message
+	send_message(list); // should send message
 
 
 	//document.getElementById("myDiv").innerHTML = document.getElementById("myDiv").innerHTML + room_that_hear_sound;
