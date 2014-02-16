@@ -1,6 +1,7 @@
 
 var message;
 var userAgent;
+var messages;
 
 userAgent=new SIP.UA ();
 userAgent.start();
@@ -15,7 +16,7 @@ function send_message(){
 function read_message(){
 	var conf = new SIP.UA('messages@codeday.onsip.com').
 		on('message', function (message){
-			alert(message.body);
+			messages += message.body + "\n";
 		})
 
 		conf.start();
