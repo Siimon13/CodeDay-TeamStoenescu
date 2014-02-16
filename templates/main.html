@@ -2,9 +2,10 @@
 
 <head>
 	<link rel="stylesheet" type="text/css" href="../static/main.css">
-	<script src="static/jquery-latest.js" type="text/javascript" ></script>
-	<script src="static/get.js" type="text/javascript" ></script>
-	<script src="static/jquery-animate-colors.js" type="text/javascript"></script>
+	<script src="../static/jquery-latest.js" type="text/javascript" ></script>
+	<script src="../static/get.js" type="text/javascript" ></script>
+	<script src="../static/main.js" type="text/javascript" ></script>
+	<script src="../static/jquery-animate-colors.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -38,8 +39,8 @@
 	</div>
 	<div>
 		<script>
-		var prev_data = null,
-		var waiting_for_update = false,
+		var prev_data = null;
+		var waiting_for_update = false;
 		var LONG_POLL_DURATION = 60000; 
 
 		function load_data() {
@@ -47,7 +48,7 @@
 			var url = "0.0.0.0:5000/get"
 			alert("asdf");
 			$.ajax({
-				type = "GET",
+				//type = "GET",
 				url:     "0.0.0.0:5000/get",
 				success: function(data) {
 					display_data(data);
@@ -58,7 +59,7 @@
 		}
 
 		function wait_for_update() {
-			
+
 			if (!waiting_for_update) {
 				waiting_for_update = true;
 				$.ajax({ url: '/',
@@ -86,7 +87,7 @@
 	</div>
 	<div class="column" id="two">
 		{% for button in buttons %}
-		<button type="button" onclick="load_data()">{{ button.name }}</button>
+		<button type="button" onclick=highlight(this,4)>{{ button.name }}</button>
 		<br>
 		{% endfor %}
 	</div>
