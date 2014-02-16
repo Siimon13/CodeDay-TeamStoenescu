@@ -19,6 +19,7 @@ function read_message(){
 		on('message', function (message){
 			if(message){
 				var info = to_list(message.body);
+				console.log(message.body);
 				// decide whether to play a sound
 				// if we should play a sound according to the data
 				for (var string in info) {
