@@ -3,16 +3,14 @@
 <head>
 <title>Test</title>
 <script src="Engine.js"></script>
-<!--script>move_room(xplayer,xroom)</script-->
-<script type="text/javascript">
-	function doStuff(){
-	document.getElementById("myDiv").innerHTML =move_room(current_player,current_player.currentRoom.doors[0]);
-}
-</script>
 </head>
 <body>
-<div id="myDiv"><h2>Let AJAX change this text</h2></div>
-<button type="button" onclick=doStuff()>Move Rooms</button>
+<div id="myDiv"><h2>You are in the kitchen</h2></div>
+<button type="button" onclick=move_room("player_1","hallway")>Move Hallway</button>
+<button type="button" onclick=move_room("player_1","living_room")>Move Living</button>
+<button type="button" onclick=move_room("player_1","foyer")>Move Foyer</button>
+<button type="button" onclick=move_room("player_1","bathroom")>Move Bathroom</button>
+<button type="button" onclick=move_room("player_1","bedroom")>Move Bedroom</button>
 
 
 </body>

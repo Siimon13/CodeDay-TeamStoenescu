@@ -23,17 +23,17 @@ function player (name, currentRoom) {
 
 var current_player = new player("player_1",game_rooms[0]);
 
-var move_room = function(xplayer,xroom){
+var move_room = function(xplayer, xroom){
 	for (var i = current_player.currentRoom.doors.length - 1; i >= 0; i--){
 		if(current_player.currentRoom.doors[i] == xroom){
 			//current_player.currentRoom = xroom;
 			for (var j = game_rooms.length - 1; j >= 0; j--) {
-				if (game_rooms[j].name = xroom) {
+				if (game_rooms[j].name == xroom) {
 					current_player.currentRoom = game_rooms[j];
 				}
 			};
-			return current_player.currentRoom.doors;
-			//return "You moved into the " + xroom;
+			//return current_player.currentRoom.doors;
+			document.getElementById("myDiv").innerHTML = "You moved into the " + xroom;
 		}
 	};
 }
