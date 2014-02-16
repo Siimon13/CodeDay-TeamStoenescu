@@ -173,6 +173,7 @@ var play_sound = function(num){
 	if (current_player.currentRoom.name == "closet") {
 		var sound = "twig";
 	}
+	var sound = "null";
 	var list = room_that_hear_sound.push(sound);
 	if($.contains(current_player.currentRoom.name, room_that_hear_sound) != -1 && num != 0){
 		// either twig or scream....
