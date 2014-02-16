@@ -162,18 +162,19 @@ var play_sound = function(num){
 		}
 	}
 	if(num == 1){
-		room_that_hear_sound = [current_player.currentRoom.name,current_player.currentRoom.doors];
+		room_that_hear_sound = current_player.currentRoom.doors.push(current_player.currentRoom.name);//[current_player.currentRoom.name,current_player.currentRoom.doors];
 	}
 	if(num == 2){
 		room_that_hear_sound = game_rooms;
 	}
+	var sound = "whatthefuck";
 	if (current_player.currentRoom.name == "bedroom") {
-		var sound = "scream";
+		sound = "scream";
 	}
 	if (current_player.currentRoom.name == "closet") {
-		var sound = "twig";
+		sound = "twig";
 	}
-	var sound = "null";
+
 	var list = room_that_hear_sound.push(sound);
 	if($.contains(current_player.currentRoom.name, room_that_hear_sound) != -1 && num != 0){
 		// either twig or scream....
