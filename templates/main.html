@@ -10,7 +10,11 @@
 	<div id="wrapper"> 
 		<div class="column" id="one">h
 		</div>
-		<div class="column" id="two">h
+		<div class="column" id="two">
+			{% for button in buttons %}
+			<button>{{ button.name }}</button>
+			<br>
+			{% endfor %}
 		</div>
 		<div class="column" id="three">h
 		</div>
