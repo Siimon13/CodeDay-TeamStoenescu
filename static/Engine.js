@@ -140,7 +140,7 @@ function player (name, currentRoom) {
 
 var timewait = false;
 
-var room_that_hear_sound = [];
+var room_that_hear_sound;
 
 var current_player = new player("player1",game_rooms[0]);
 
@@ -150,7 +150,7 @@ var play_sound = function(num){
 	$.getScript("../static/jquery-latest.js", function(){});
  
 	if(num == 0){
-		room_that_hear_sound = current_player.currentRoom.name;
+		room_that_hear_sound = [current_player.currentRoom.name];
 		if(current_player.currentRoom.name == room_that_hear_sound){
 			if (current_player.currentRoom.name == "bedroom") {
 				var audio = new Audio('../static/scream.mp3');
