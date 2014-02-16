@@ -140,7 +140,7 @@ function player (name, currentRoom) {
 
 var timewait = false;
 
-var room_that_hear_sound;
+var room_that_hear_sound = [];
 
 var current_player = new player("player1",game_rooms[0]);
 
