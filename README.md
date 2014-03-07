@@ -1,5 +1,4 @@
-CodeDay-TeamStoenescu
-with PHP!
+CodeDay-TeamStoenescu With PHP!
 =====================
 
 Team Stoenescu's Project(Siimon's Ver.)
