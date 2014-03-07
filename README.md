@@ -1,7 +1,6 @@
 CodeDay-TeamStoenescu
 =====================
 
-Team Stoenescu's Project
+Team Stoenescu's Project(Siimon's Ver.)
 
-Track our progress at:
-https://docs.google.com/document/d/1pga2q41mqsa2yjKhc6iRS3L_8PZE6qYL-LhmCACZtgA/edit
+Set up the server with php instead of relying only on js. Attempt to implement multiplayer with php and maybe Apache2 instead of Flask.
